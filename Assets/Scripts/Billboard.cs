@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Billboard : MonoBehaviour {
+public class Billboard: MonoBehaviour {
   [SerializeField] bool _lockX = true;
   [SerializeField] bool _lockZ = true;
 
