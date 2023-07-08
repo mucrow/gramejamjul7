@@ -10,19 +10,20 @@ public class EnemyCircularPatrol: MonoBehaviour {
   Rigidbody _rigidbody;
   Vector3 _startPosition;
   bool _hasSnappedThisCycle;
+  float _snapThreshold;
 
   void Awake() {
     _pivot = _pivotTransform.position;
     _rigidbody = GetComponent<Rigidbody>();
     _startPosition = transform.position;
     _hasSnappedThisCycle = false;
+    _snapThreshold = (_startPosition - _pivot).magnitude * 0.25f;
   }
 
   void FixedUpdate() {
     var currentPosition = transform.position;
 
-    if ((currentPosition - _startPosition).magnitude < 1f) { //arbitrary limit. when we're close to start, time to home in on start position
-
+    if ((currentPosition - _startPosition).magnitude < _snapThreshold) { //arbitrary limit. when we're close to start, time to home in on start position
       if (!_hasSnappedThisCycle) {
         var positionAfterMove = Vector3.MoveTowards(currentPosition, _startPosition, _speed);
 
@@ -39,7 +40,7 @@ public class EnemyCircularPatrol: MonoBehaviour {
         Vector3 direction = Vector3.Cross(_pivot - currentPosition, Vector3.up).normalized;
         _rigidbody.velocity = direction * _speed;
       }
-      
+
     } else {
       if (_hasSnappedThisCycle) {
         // if we're outside the snap range, reset this var so we can snap again once we go around the loop

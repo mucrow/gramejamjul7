@@ -797,6 +797,10 @@ PrefabInstance:
       propertyPath: _rate
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4793296947504403463, guid: b972c0bad041cfc43bd3faf921b1af67, type: 3}
+      propertyPath: m_CustomSkybox
+      value: 
+      objectReference: {fileID: 2100000, guid: 3fce3da0c26cd7c479644e586f3ef725, type: 2}
     - target: {fileID: 8086961657820726383, guid: b972c0bad041cfc43bd3faf921b1af67, type: 3}
       propertyPath: m_Name
       value: Globals
