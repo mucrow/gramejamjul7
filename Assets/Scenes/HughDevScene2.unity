@@ -552,11 +552,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1148538815}
+  - component: {fileID: 1148538816}
   - component: {fileID: 1148538814}
   - component: {fileID: 1148538813}
   - component: {fileID: 1148538812}
   m_Layer: 0
-  m_Name: Cube (5)
+  m_Name: CubeThatFiresSlowArrows
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -648,6 +649,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1148538816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1148538811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0c451a2dd1144579a1f6573c0b4c2d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _arrowPrefab: {fileID: 5949805053114448126, guid: 928e1aed3a953fe4694cb766408e3217, type: 3}
+  _timeBetweenShots: 1
 --- !u!1 &1593589395
 GameObject:
   m_ObjectHideFlags: 0

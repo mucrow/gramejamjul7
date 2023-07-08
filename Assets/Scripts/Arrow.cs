@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Arrow: MonoBehaviour {
   [Header("This vector will be normalized.")]
-  [SerializeField] Vector3 _direction = new Vector3(-1f, 0, 1f);
+  [SerializeField] Vector3 _direction = new Vector3(0f, 0, 1f);
 
   [SerializeField] float _speed = 50f;
 
@@ -14,7 +14,7 @@ public class Arrow: MonoBehaviour {
   }
 
   void Start() {
-    _rigidbody.velocity = _direction.normalized * _speed;
+    _rigidbody.velocity = transform.localRotation * Vector3.forward * _speed;
   }
 
   void OnCollisionEnter(Collision other) {
