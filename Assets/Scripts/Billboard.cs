@@ -1,16 +1,30 @@
 ﻿using UnityEngine;
 
 public class Billboard : MonoBehaviour {
-  Camera mainCamera;
+  [SerializeField] bool _lockX = true;
+  [SerializeField] bool _lockZ = true;
+
+  Camera _mainCamera;
+  Vector3 _cameraRotation;
+  Vector3 _newRotation;
 
   void Start() {
-    mainCamera = Camera.main;
+    _mainCamera = Camera.main;
   }
 
   void LateUpdate() {
-    Vector3 newRotation = mainCamera.transform.eulerAngles;
-    newRotation.x = 0;
-    newRotation.z = 0;
-    transform.eulerAngles = newRotation;
+    _cameraRotation = _mainCamera.transform.eulerAngles;
+
+    _newRotation = transform.eulerAngles;
+    _newRotation.y = _cameraRotation.y;
+
+    if (!_lockX) {
+      _newRotation.x = _cameraRotation.x;
+    }
+    if (!_lockZ) {
+      _newRotation.z = _cameraRotation.z;
+    }
+
+    transform.eulerAngles = _newRotation;
   }
 }
