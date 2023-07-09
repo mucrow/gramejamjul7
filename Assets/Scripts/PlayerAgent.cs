@@ -2,6 +2,7 @@
 
 public class PlayerAgent: MonoBehaviour {
   [SerializeField] GameObject _arrowPrefab;
+  [SerializeField] float _slowMotionTimeScale = 0.2f;
 
   Camera _mainCamera;
 
@@ -29,7 +30,7 @@ public class PlayerAgent: MonoBehaviour {
     }
 
     if (slowTimeButtonPressed) {
-      Time.timeScale = 0.1f;
+      Time.timeScale = _slowMotionTimeScale;
     }
     if (slowTimeButtonReleased) {
       Time.timeScale = 1f;
