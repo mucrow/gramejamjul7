@@ -25,7 +25,7 @@ public class EnemyCircularPatrol: MonoBehaviour {
 
     if ((currentPosition - _startPosition).magnitude < _snapThreshold) { //arbitrary limit. when we're close to start, time to home in on start position
       if (!_hasSnappedThisCycle) {
-        var positionAfterMove = Vector3.MoveTowards(currentPosition, _startPosition, _speed);
+        var positionAfterMove = Vector3.MoveTowards(currentPosition, _startPosition, Mathf.Abs(_speed));
 
         // check: are we now on top of start position?
         if ((positionAfterMove - currentPosition).magnitude < .1f) {
@@ -34,7 +34,7 @@ public class EnemyCircularPatrol: MonoBehaviour {
         } else {
           // move in straight line directly towards start
           Vector3 direction = (_startPosition - currentPosition).normalized;
-          _rigidbody.velocity = direction * _speed;
+          _rigidbody.velocity = direction * Mathf.Abs(_speed);
         }
       } else {
         Vector3 direction = Vector3.Cross(_pivot - currentPosition, Vector3.up).normalized;
