@@ -537,6 +537,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 45
       objectReference: {fileID: 0}
+    - target: {fileID: 3414782789058663197, guid: b972c0bad041cfc43bd3faf921b1af67, type: 3}
+      propertyPath: orthographic size
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 4313567912213711799, guid: b972c0bad041cfc43bd3faf921b1af67, type: 3}
       propertyPath: m_RootOrder
       value: 0
