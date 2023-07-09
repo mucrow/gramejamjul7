@@ -48,6 +48,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyCircularPatrol
       objectReference: {fileID: 0}
+    - target: {fileID: 5394376704123021511, guid: 1b9cc089781f57b46a928c47ccf0dd4a, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -5311732170184403020, guid: 9b0c4de0b23946e4f84f2701f2b0e99f, type: 3}
     - target: {fileID: 8148994901693913576, guid: 1b9cc089781f57b46a928c47ccf0dd4a, type: 3}
       propertyPath: m_RootOrder
       value: 0

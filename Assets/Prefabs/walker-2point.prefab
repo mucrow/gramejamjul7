@@ -84,6 +84,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3621063757407323994, guid: 231ed81b806e3d541baf1b8457073851, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -5311732170184403020, guid: 9b0c4de0b23946e4f84f2701f2b0e99f, type: 3}
     - target: {fileID: 5391502494804028351, guid: 231ed81b806e3d541baf1b8457073851, type: 3}
       propertyPath: m_Name
       value: EnemyTwoPointPatrol
