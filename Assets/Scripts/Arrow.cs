@@ -21,4 +21,11 @@ public class Arrow: MonoBehaviour {
     // TODO probably want handling for game logic and particle effects here
     Destroy(gameObject);
   }
+
+  void OnTriggerEnter(Collider other) {
+    var otherGameObject = other.gameObject;
+    if (otherGameObject.CompareTag("Enemy")) {
+      Destroy(otherGameObject);
+    }
+  }
 }
