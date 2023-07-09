@@ -9,6 +9,7 @@ public class PlayerAgent: MonoBehaviour {
 
   LineRenderer _lineRenderer;
   Camera _mainCamera;
+  RaycastHit[] _raycastHits = new RaycastHit[256];
 
   void Start() {
     _mainCamera = Camera.main;
@@ -47,22 +48,20 @@ public class PlayerAgent: MonoBehaviour {
     var arrowRayEulerAngles = new Vector3(0f, _mainCamera.transform.eulerAngles.y, 0f);
     var arrowRayDirection = Quaternion.Euler(arrowRayEulerAngles);
 
-    var raycastHits = new RaycastHit[256];
     var enemiesFromCurrentRay = new List<GameObject>();
     var enemiesFromBestRay = new List<GameObject>();
     for (arrowRayStart.y = minYLevel; arrowRayStart.y <= (maxYLevel + 0.001f); arrowRayStart.y += yStep) {
-      var numRaycastHits = Physics.RaycastNonAlloc(arrowRayStart, arrowRayDirection * Vector3.forward, raycastHits);
+      var numRaycastHits = Physics.RaycastNonAlloc(arrowRayStart, arrowRayDirection * Vector3.forward, _raycastHits);
       if (numRaycastHits <= 0) {
         continue;
       }
 
       // sort raycast hits by distance
-      Array.Sort(raycastHits, 0, numRaycastHits, new RaycastHitAscendingDistanceComparer());
+      Array.Sort(_raycastHits, 0, numRaycastHits, new RaycastHitAscendingDistanceComparer());
 
       for (int i = 0; i < numRaycastHits; ++i) {
-        var raycastHit = raycastHits[i];
+        var raycastHit = _raycastHits[i];
         var hitCollider = raycastHit.collider;
-        // var hitGameObject = raycastHit.collider.gameObject;
 
         if (!hitCollider.isTrigger) {
           break;

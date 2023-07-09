@@ -40,6 +40,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5680870039932770782}
     m_Modifications:
+    - target: {fileID: -6786786180329321556, guid: 231ed81b806e3d541baf1b8457073851, type: 3}
+      propertyPath: _waypointPrefab
+      value: 
+      objectReference: {fileID: 8121188425496232164, guid: 951a72cae4d4ac9498edaefc4e62d6e2, type: 3}
     - target: {fileID: 579577654585943499, guid: 231ed81b806e3d541baf1b8457073851, type: 3}
       propertyPath: m_Height
       value: 0.9
@@ -195,5 +199,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpInterval: 5
-  jumpStrength: 3
+  jumpStrength: 400
   gravityStrength: 0.5
