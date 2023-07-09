@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class PlayerAgent: MonoBehaviour {
@@ -14,21 +16,22 @@ public class PlayerAgent: MonoBehaviour {
   }
 
   void Update() {
-    var arrowRayStart = _mainCamera.transform.position;
-    arrowRayStart.y = 1f;
-    var arrowRayEulerAngles = new Vector3(0f, _mainCamera.transform.eulerAngles.y, 0f);
-    var arrowRayDirection = Quaternion.Euler(arrowRayEulerAngles);
-    var arrowRayPositionDelta = arrowRayDirection * Vector3.forward * 1000f;
-
-    var arrowRayEnd = arrowRayStart + arrowRayPositionDelta;
-    _lineRenderer.SetPositions(new Vector3[] { arrowRayStart, arrowRayEnd });
+    // var arrowRayStart = _mainCamera.transform.position;
+    // arrowRayStart.y = 1f;
+    // var arrowRayEulerAngles = new Vector3(0f, _mainCamera.transform.eulerAngles.y, 0f);
+    // var arrowRayDirection = Quaternion.Euler(arrowRayEulerAngles);
+    // var arrowRayPositionDelta = arrowRayDirection * Vector3.forward * 1000f;
+    //
+    // var arrowRayEnd = arrowRayStart + arrowRayPositionDelta;
+    // _lineRenderer.SetPositions(new Vector3[] { arrowRayStart, arrowRayEnd });
 
     bool strafeArrowButtonPressed = Input.GetMouseButtonDown(0);
     bool slowTimeButtonPressed = Input.GetMouseButtonDown(1);
     bool slowTimeButtonReleased = Input.GetMouseButtonUp(1);
 
     if (strafeArrowButtonPressed) {
-      FireArrow(arrowRayStart, arrowRayDirection);
+      // FireArrow(arrowRayStart, arrowRayDirection);
+      FireArrow(1f, 14f, 0.5f);
     }
 
     if (slowTimeButtonPressed) {
@@ -39,19 +42,45 @@ public class PlayerAgent: MonoBehaviour {
     }
   }
 
-  void FireArrow(Vector3 arrowStart, Quaternion arrowDirection) {
-    var raycastHits = Physics.RaycastAll(arrowStart, arrowDirection * Vector3.forward);
-    // sort raycast hits by distance
-    Array.Sort(raycastHits, new RaycastHitAscendingDistanceComparer());
+  void FireArrow(float minYLevel, float maxYLevel, float yStep) {
+    var arrowRayStart = _mainCamera.transform.position;
+    var arrowRayEulerAngles = new Vector3(0f, _mainCamera.transform.eulerAngles.y, 0f);
+    var arrowRayDirection = Quaternion.Euler(arrowRayEulerAngles);
 
-    foreach (var raycastHit in raycastHits) {
-      var hitCollider = raycastHit.collider;
-      if (!hitCollider.isTrigger) {
-        break;
+    var raycastHits = new RaycastHit[256];
+    var enemiesFromCurrentRay = new List<GameObject>();
+    var enemiesFromBestRay = new List<GameObject>();
+    for (arrowRayStart.y = minYLevel; arrowRayStart.y <= (maxYLevel + 0.001f); arrowRayStart.y += yStep) {
+      var numRaycastHits = Physics.RaycastNonAlloc(arrowRayStart, arrowRayDirection * Vector3.forward, raycastHits);
+      if (numRaycastHits <= 0) {
+        continue;
       }
-      if (hitCollider.CompareTag("Enemy")) {
-        Destroy(hitCollider.gameObject);
+
+      // sort raycast hits by distance
+      Array.Sort(raycastHits, 0, numRaycastHits, new RaycastHitAscendingDistanceComparer());
+
+      for (int i = 0; i < numRaycastHits; ++i) {
+        var raycastHit = raycastHits[i];
+        var hitCollider = raycastHit.collider;
+        // var hitGameObject = raycastHit.collider.gameObject;
+
+        if (!hitCollider.isTrigger) {
+          break;
+        }
+        if (hitCollider.CompareTag("Enemy")) {
+          enemiesFromCurrentRay.Add(hitCollider.gameObject);
+        }
       }
+
+      if (enemiesFromCurrentRay.Count > enemiesFromBestRay.Count) {
+        enemiesFromBestRay = new List<GameObject>(enemiesFromCurrentRay);
+      }
+      enemiesFromCurrentRay.Clear();
+    }
+
+    foreach (var enemy in enemiesFromBestRay) {
+      // TODO death effects
+      Destroy(enemy);
     }
   }
 }
