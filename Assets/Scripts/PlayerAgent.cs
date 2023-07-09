@@ -25,7 +25,7 @@ public class PlayerAgent: MonoBehaviour {
 
       var arrowPosition = newArrow.transform.position;
       // TODO choose Y-level based on MAXIMUM KILL POTENTIAL
-      arrowPosition.y = 0.5f;
+      arrowPosition.y = 1f;
       newArrow.transform.position = arrowPosition;
     }
 
