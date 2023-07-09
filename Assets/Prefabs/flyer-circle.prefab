@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2155860787021682157}
   m_Layer: 9
-  m_Name: walker-circle
+  m_Name: flyer-circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -42,7 +42,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2935235009347456872, guid: 1b9cc089781f57b46a928c47ccf0dd4a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.7
       objectReference: {fileID: 0}
     - target: {fileID: 3624906980034216994, guid: 1b9cc089781f57b46a928c47ccf0dd4a, type: 3}
       propertyPath: m_Name
@@ -55,7 +55,7 @@ PrefabInstance:
     - target: {fileID: 5394376704123021511, guid: 1b9cc089781f57b46a928c47ccf0dd4a, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -5311732170184403020, guid: 9b0c4de0b23946e4f84f2701f2b0e99f, type: 3}
+      objectReference: {fileID: -6131643182608937660, guid: aa2cf6608c0269847a2acbd9f3d49609, type: 3}
     - target: {fileID: 7774698061227053730, guid: 1b9cc089781f57b46a928c47ccf0dd4a, type: 3}
       propertyPath: m_Layer
       value: 9
@@ -117,7 +117,7 @@ PrefabInstance:
       addedObject: {fileID: 1917298230839853573}
     - targetCorrespondingSourceObject: {fileID: 7774698061227053730, guid: 1b9cc089781f57b46a928c47ccf0dd4a, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 8272401145540416818}
+      addedObject: {fileID: 227672988227658431}
   m_SourcePrefab: {fileID: 100100000, guid: 1b9cc089781f57b46a928c47ccf0dd4a, type: 3}
 --- !u!4 &560665113875805698 stripped
 Transform:
@@ -129,7 +129,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7774698061227053730, guid: 1b9cc089781f57b46a928c47ccf0dd4a, type: 3}
   m_PrefabInstance: {fileID: 8561600466212499434}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &8272401145540416818
+--- !u!95 &227672988227658431
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
@@ -139,7 +139,7 @@ Animator:
   m_GameObject: {fileID: 2104778558633246024}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: f240305b3b991884ab701245d24a878d, type: 2}
+  m_Controller: {fileID: 9100000, guid: 228126d11058a5a479646b6b57baa1e0, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

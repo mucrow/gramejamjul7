@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5680870039932770782}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: walker-2point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30,7 +30,7 @@ Transform:
   m_Children:
   - {fileID: 3658944309478382851}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &4272810503608281974
 PrefabInstance:
@@ -96,6 +96,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1403278054774570303, guid: 231ed81b806e3d541baf1b8457073851, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 3621063757407323994, guid: 231ed81b806e3d541baf1b8457073851, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -103,6 +107,14 @@ PrefabInstance:
     - target: {fileID: 5391502494804028351, guid: 231ed81b806e3d541baf1b8457073851, type: 3}
       propertyPath: m_Name
       value: EnemyTwoPointPatrol
+      objectReference: {fileID: 0}
+    - target: {fileID: 5391502494804028351, guid: 231ed81b806e3d541baf1b8457073851, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5471290934603879113, guid: 231ed81b806e3d541baf1b8457073851, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 5773680649916981493, guid: 231ed81b806e3d541baf1b8457073851, type: 3}
       propertyPath: m_LocalPosition.y

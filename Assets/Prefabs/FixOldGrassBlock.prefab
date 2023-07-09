@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5681613578485923789}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FixOldGrassBlock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29,15 +29,15 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3841193692719638554}
-  - {fileID: 3407770700067511149}
+  - {fileID: 7237062321235531062}
   - {fileID: 4934660175766388129}
   - {fileID: 1544025414213994085}
   - {fileID: 1194215783325286718}
-  - {fileID: 4267014659268996628}
+  - {fileID: 8075688100816576585}
   - {fileID: 8220945710083424057}
   - {fileID: 8922529044300818465}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1107480866592650235
 PrefabInstance:
@@ -166,7 +166,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c641ae85fb159a744aa2670cb198df3a, type: 3}
---- !u!4 &3407770700067511149 stripped
+--- !u!4 &7237062321235531062 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5414981190398086746, guid: c641ae85fb159a744aa2670cb198df3a, type: 3}
   m_PrefabInstance: {fileID: 3407770700067511148}
@@ -364,7 +364,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c641ae85fb159a744aa2670cb198df3a, type: 3}
---- !u!4 &4267014659268996628 stripped
+--- !u!4 &8075688100816576585 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5414981190398086746, guid: c641ae85fb159a744aa2670cb198df3a, type: 3}
   m_PrefabInstance: {fileID: 4267014659268996627}
