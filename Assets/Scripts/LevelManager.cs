@@ -12,6 +12,7 @@ public class LevelManager: MonoBehaviour {
   [SerializeField] Sprite _bannerWin;
   [SerializeField] Curtains _curtains;
   [SerializeField] int _numArrows = 16;
+  [SerializeField] Text _winBannerArrowCount;
 
   enum State {
     InitialWait,
@@ -32,8 +33,10 @@ public class LevelManager: MonoBehaviour {
   float _initialWait = 1f;
   State _state;
   float _timer;
+  int _startingArrowCount;
 
   void Start() {
+    _startingArrowCount = _numArrows;
     Time.timeScale = 0f;
     _state = State.InitialWait;
     _timer = _initialWait;
@@ -46,7 +49,6 @@ public class LevelManager: MonoBehaviour {
       // this state exists cause unscaledDeltaTime is jank when a game first starts
       if (_timer <= 0f) {
         _state = State.OpeningCurtains;
-        Debug.Log("opening curtains...");
         _timer = _curtainPullRate;
       }
     }
@@ -55,9 +57,8 @@ public class LevelManager: MonoBehaviour {
         bool curtainsAreFullyOpen = _curtains.PullOpen();
         if (curtainsAreFullyOpen) {
           _state = State.Countdown;
-          // TODO show countdown display
           _countdownNumber = 3;
-          Debug.Log(_countdownNumber);
+          _banner.sprite = _bannerCountdown[_countdownNumber];
           _timer += _countdownRate;
         }
         else {
@@ -69,14 +70,12 @@ public class LevelManager: MonoBehaviour {
       if (_timer <= 0f) {
         _countdownNumber -= 1;
         if (_countdownNumber <= 0) {
-          Debug.Log("GO!");
-          // TODO hide countdown display
+          _banner.sprite = _bannerBlank;
           _state = State.Gameplay;
           Time.timeScale = 1f;
         }
         else {
-          Debug.Log(_countdownNumber);
-          // TODO update countdown display
+          _banner.sprite = _bannerCountdown[_countdownNumber];
           _timer += _countdownRate;
         }
       }
@@ -84,31 +83,27 @@ public class LevelManager: MonoBehaviour {
     else if (_state == State.Gameplay) {
       if (_numArrows <= 0) {
         _state = State.ArrowStarving;
-        Debug.Log("omg am i actually arrow starved rn ???");
       }
       else if (GetNumEnemiesAlive() <= 0) {
-        Debug.Log("birdie or smth LMAO");
         SetYouWonState();
       }
     }
     else if (_state == State.ArrowStarving) {
       // this state exists to give enemies a frame to DIE
       if (GetNumEnemiesAlive() <= 0) {
-        Debug.Log("nope i won lol");
         SetYouWonState();
       }
       else {
-        // TODO show "arrow starved" banner
+        _banner.sprite = _bannerArrowStarved;
         _state = State.ArrowStarved;
         Time.timeScale = 0f;
-        Debug.Log("yep i fuckign died - showing \"arrow starved\" banner");
         _timer = _bannerDuration;
       }
     }
     else if (_state == State.ArrowStarved) {
       if (_timer <= 0f) {
+        _banner.sprite = _bannerBlank;
         _state = State.ClosingCurtainsForRetry;
-        Debug.Log("closing curtains...");
         _timer += _curtainPullRate;
       }
     }
@@ -116,7 +111,6 @@ public class LevelManager: MonoBehaviour {
       if (_timer <= 0f) {
         bool curtainsAreFullyClosed = _curtains.PullClosed();
         if (curtainsAreFullyClosed) {
-          Debug.Log("reloading level");
           var scene = SceneManager.GetActiveScene();
           SceneManager.LoadScene(scene.buildIndex);
         }
@@ -127,8 +121,9 @@ public class LevelManager: MonoBehaviour {
     }
     else if (_state == State.YouWonBanner) {
       if (_timer <= 0f) {
+        _banner.sprite = _bannerBlank;
+        _winBannerArrowCount.text = "";
         _state = State.ClosingCurtainsForNextLevel;
-        Debug.Log("closing curtains...");
         _timer = _curtainPullRate;
       }
     }
@@ -136,7 +131,6 @@ public class LevelManager: MonoBehaviour {
       if (_timer <= 0f) {
         bool curtainsAreFullyClosed = _curtains.PullClosed();
         if (curtainsAreFullyClosed) {
-          Debug.Log("loading next level");
           var scene = SceneManager.GetActiveScene();
           SceneManager.LoadScene(scene.buildIndex + 1);
         }
@@ -156,7 +150,8 @@ public class LevelManager: MonoBehaviour {
   }
 
   void SetYouWonState() {
-    // TODO show "you won" banner
+    _banner.sprite = _bannerWin;
+    _winBannerArrowCount.text = (_startingArrowCount - _numArrows) + " arrows";
     _state = State.YouWonBanner;
     _timer = _bannerDuration;
   }
