@@ -8,13 +8,18 @@ public class PlayerAgent: MonoBehaviour {
   [SerializeField] LevelManager _levelManager;
   [SerializeField] float _slowMotionTimeScale = 0.2f;
 
+  AudioSource _audioSource;
   LineRenderer _lineRenderer;
   Camera _mainCamera;
   RaycastHit[] _raycastHits = new RaycastHit[256];
 
+  void Awake() {
+    _audioSource = GetComponent<AudioSource>();
+    _lineRenderer = GetComponentInChildren<LineRenderer>();
+  }
+
   void Start() {
     _mainCamera = Camera.main;
-    _lineRenderer = GetComponentInChildren<LineRenderer>();
   }
 
   void Update() {
@@ -82,9 +87,12 @@ public class PlayerAgent: MonoBehaviour {
       enemiesFromCurrentRay.Clear();
     }
 
-    foreach (var enemy in enemiesFromBestRay) {
-      // TODO death effects
-      Destroy(enemy);
+    if (enemiesFromBestRay.Count > 0) {
+      _audioSource.Play();
+      foreach (var enemy in enemiesFromBestRay) {
+        // TODO death effects
+        Destroy(enemy);
+      }
     }
 
     _levelManager.NotifyArrowFired();
