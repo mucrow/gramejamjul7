@@ -17,14 +17,14 @@ public class PlayerAgent: MonoBehaviour {
   }
 
   void Update() {
-    // var arrowRayStart = _mainCamera.transform.position;
-    // arrowRayStart.y = 1f;
-    // var arrowRayEulerAngles = new Vector3(0f, _mainCamera.transform.eulerAngles.y, 0f);
-    // var arrowRayDirection = Quaternion.Euler(arrowRayEulerAngles);
-    // var arrowRayPositionDelta = arrowRayDirection * Vector3.forward * 1000f;
-    //
-    // var arrowRayEnd = arrowRayStart + arrowRayPositionDelta;
-    // _lineRenderer.SetPositions(new Vector3[] { arrowRayStart, arrowRayEnd });
+    var arrowRayStart = _mainCamera.transform.position;
+    arrowRayStart.y = 1f;
+    var arrowRayEulerAngles = new Vector3(0f, _mainCamera.transform.eulerAngles.y, 0f);
+    var arrowRayDirection = Quaternion.Euler(arrowRayEulerAngles);
+    var arrowRayPositionDelta = arrowRayDirection * Vector3.forward * 1000f;
+
+    var arrowRayEnd = arrowRayStart + arrowRayPositionDelta;
+    _lineRenderer.SetPositions(new Vector3[] { arrowRayStart, arrowRayEnd });
 
     bool strafeArrowButtonPressed = Input.GetMouseButtonDown(0);
     bool slowTimeButtonPressed = Input.GetMouseButtonDown(1);
