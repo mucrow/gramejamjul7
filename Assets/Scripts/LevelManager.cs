@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelManager: MonoBehaviour {
   [SerializeField] Curtains _curtains;
@@ -110,7 +111,8 @@ public class LevelManager: MonoBehaviour {
         bool curtainsAreFullyClosed = _curtains.PullClosed();
         if (curtainsAreFullyClosed) {
           Debug.Log("reloading level");
-          // TODO reload level
+          var scene = SceneManager.GetActiveScene();
+          SceneManager.LoadScene(scene.buildIndex);
         }
         else {
           _timer += _curtainPullRate;
@@ -128,8 +130,9 @@ public class LevelManager: MonoBehaviour {
       if (_timer <= 0f) {
         bool curtainsAreFullyClosed = _curtains.PullClosed();
         if (curtainsAreFullyClosed) {
-          // TODO load next level
           Debug.Log("loading next level");
+          var scene = SceneManager.GetActiveScene();
+          SceneManager.LoadScene(scene.buildIndex + 1);
         }
         else {
           _timer += _curtainPullRate;
