@@ -1,0 +1,6 @@
+- magic wand perspective game, when you hit start on a level, the camera rotates 360 degrees around a pivot in the center of the level, and the player is tasked with timing the strafe of a bow such that a single arrow pierces every enemy on screen
+  - it's a rhythm game and the various arrangements of enemies become recognizable to the player as a specific rhythm (e.g., this shape is an eighth note , this shape is two eighth notes
+  - you have some number of arrows to clear all enemies
+  - you have 16 arrows to clear a lot of enemies (16 arrows / 16 enemies = 256 total)
+
+
