@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PlayerAgent: MonoBehaviour {
   [SerializeField] GameObject _arrowPrefab;
+  [SerializeField] LevelManager _levelManager;
   [SerializeField] float _slowMotionTimeScale = 0.2f;
 
   LineRenderer _lineRenderer;
@@ -17,6 +18,10 @@ public class PlayerAgent: MonoBehaviour {
   }
 
   void Update() {
+    if (Time.timeScale == 0f) {
+      return;
+    }
+
     var arrowRayStart = _mainCamera.transform.position;
     arrowRayStart.y = 1f;
     var arrowRayEulerAngles = new Vector3(0f, _mainCamera.transform.eulerAngles.y, 0f);
@@ -81,5 +86,7 @@ public class PlayerAgent: MonoBehaviour {
       // TODO death effects
       Destroy(enemy);
     }
+
+    _levelManager.NotifyArrowFired();
   }
 }
