@@ -1203,6 +1203,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.7122642
       objectReference: {fileID: 0}
+    - target: {fileID: 7972329475898210063, guid: b972c0bad041cfc43bd3faf921b1af67, type: 3}
+      propertyPath: m_Volume
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8086961657820726383, guid: b972c0bad041cfc43bd3faf921b1af67, type: 3}
       propertyPath: m_Name
       value: Globals
