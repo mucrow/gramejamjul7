@@ -2,8 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class LevelManager: MonoBehaviour {
+  [SerializeField] Image _banner;
+  [SerializeField] Sprite _bannerBlank;
+  [SerializeField] Sprite[] _bannerCountdown;
+  [SerializeField] Sprite _bannerArrowStarved;
+  [SerializeField] Sprite _bannerWin;
   [SerializeField] Curtains _curtains;
   [SerializeField] int _numArrows = 16;
 
